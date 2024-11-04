@@ -1,0 +1,4 @@
+git+ssh://git@github.com/ajax-systems/meteora.git@release/0.7
+git+ssh://git@github.com/ajax-systems/phantom.git@release/0.7
+git+ssh://git@github.com/ajax-systems/automation_mobile_application.git@release/0.7
+git+ssh://git@github.com/ajax-systems/automation_utils.git@release/0.7

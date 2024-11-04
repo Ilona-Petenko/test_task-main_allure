@@ -1,0 +1,5 @@
+INFO     test_sidebar:test_sidebar.py:7 test starts
+INFO     test_sidebar:test_sidebar.py:35 com.ajaxsystems:id/settings is found
+INFO     test_sidebar:test_sidebar.py:35 com.ajaxsystems:id/help is found
+INFO     test_sidebar:test_sidebar.py:35 com.ajaxsystems:id/logs is found
+INFO     test_sidebar:test_sidebar.py:35 com.ajaxsystems:id/camera is found

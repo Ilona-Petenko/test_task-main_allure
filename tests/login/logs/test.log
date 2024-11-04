@@ -1,0 +1,3 @@
+INFO     test_login:test_login.py:7 test starts
+INFO     test_login:test_login.py:32 negative test passed with credentials.Email: a Password: qa_automation_password
+INFO     test_login:test_login.py:32 negative test passed with credentials.Email: qa.ajax.app.automation@gmail.com Password: p

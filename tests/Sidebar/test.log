@@ -1,0 +1,8 @@
+[34mDEBUG [34mframework.logger:test_sidebar.py:5 [34mtest starts
+[31mWARNING [31mframework.logger:test_sidebar.py:18 [31mWARNING
+[32mINFO [32mframework.logger:test_sidebar.py:35 [32mcom.ajaxsystems:id/settings is found
+[31mWARNING [31mframework.logger:test_sidebar.py:18 [31mWARNING
+[32mINFO [32mframework.logger:test_sidebar.py:35 [32mcom.ajaxsystems:id/help is found
+[31mWARNING [31mframework.logger:test_sidebar.py:18 [31mWARNING
+[32mINFO [32mframework.logger:test_sidebar.py:35 [32mcom.ajaxsystems:id/logs is found
+[31mWARNING [31mframework.logger:test_sidebar.py:18 [31mWARNING
