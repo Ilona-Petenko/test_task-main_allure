@@ -1,6 +1,6 @@
 import pytest
 from framework import Logger
-from tests.test_manager import handle_fail
+from tests.test_manager import handle_result, save_screenshot
 
 
 @pytest.mark.parametrize(
@@ -12,24 +12,23 @@ from tests.test_manager import handle_fail
         ("qa.ajax.app.automation@gmail.com", "qa_automation_password", True),
     ]
 )
-def test_user_login(intro_page, login_page, device_list_page, email: str, password: str, result: bool) -> None:
+def test_user_login(intro_page, login_page, device_list_page, email: str, password: str, result: bool, driver) -> None:
     intro_page.click_login_button()
     login_page.fill_email_data(email)
     login_page.fill_password_data(password)
     login_page.click_login_button()
-    assert device_list_page.check_add_button_presents() == result
+
     try:
-        if result:
-            assert device_list_page.check_add_button_presents() == result
-        else:
-            login_page.go_back()
+        assert device_list_page.check_add_button_presents() == result
+
+        Logger.logger.info(f"{'positive' if result else 'negative'} test passed with credentials. "
+                           f"Email: {email} Password: {password}")
     except AssertionError:
-        Logger.logger.error(f"test failed with {'valid' if result else 'not valid'} credentials. "
-                     f"Email: {email} Password: {password}")
-        handle_fail()
-    else:
-        Logger.logger.info(f"{'positive' if result == True else 'negative'} test passed with credentials. "
-                    f"Email: {email} Password: {password}"
-                    )
+        handle_result(driver)
 
-
+        Logger.logger.error(f"Test failed with {'valid' if result else 'not valid'} credentials. "
+                            f"Email: {email} Password: {password}")
+        raise
+    finally:
+        if not result:
+            login_page.go_back()
