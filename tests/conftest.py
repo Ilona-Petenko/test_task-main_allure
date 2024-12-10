@@ -1,11 +1,12 @@
 
 import subprocess
 import time
+from typing import Generator
 
 import pytest
 from appium import webdriver
 
-
+from tests.test_manager import handle_result
 from utils.android_utils import android_get_desired_capabilities
 from appium.options.android import UiAutomator2Options
 from framework import Logger
@@ -31,10 +32,20 @@ def run_appium_server():
     time.sleep(5)
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture()
 def driver():
     options = UiAutomator2Options()
     options.load_capabilities(android_get_desired_capabilities())
     driver = webdriver.Remote('http://localhost:4723', options=options)
     yield driver
     driver.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item: pytest.Item) -> Generator[None, None, None]:
+    outcome = yield
+    result = outcome.get_result()
+
+    if result.when == "call" and result.failed:
+        if driver:
+            handle_result(driver)

@@ -20,12 +20,9 @@ def test_user_login(intro_page, login_page, device_list_page, email: str, passwo
 
     try:
         assert device_list_page.check_add_button_presents() == result
-
         Logger.logger.info(f"{'positive' if result else 'negative'} test passed with credentials. "
                            f"Email: {email} Password: {password}")
     except AssertionError:
-        handle_result(driver)
-
         Logger.logger.error(f"Test failed with {'valid' if result else 'not valid'} credentials. "
                             f"Email: {email} Password: {password}")
         raise

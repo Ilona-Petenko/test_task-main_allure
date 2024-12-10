@@ -5,8 +5,8 @@ class LoginPage(Page):
     def __init__(self, driver):
         super().__init__(driver)
         self.login_button = "com.ajaxsystems:id/authLogin"
-        self.email_data = "com.ajaxsystems:id/authLoginEmail"
-        self.password_data = "com.ajaxsystems:id/authLoginPassword"
+        self.email_data = 'com.ajaxsystems:id/authLoginEmail'
+        self.password_data = 'com.ajaxsystems:id/authLoginPassword'
 
     def fill_email_data(self, email: str):
         email_field = self.find_element_by_id(self.email_data)
